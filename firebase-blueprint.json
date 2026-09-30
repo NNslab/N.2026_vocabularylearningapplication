@@ -1,0 +1,40 @@
+{
+  "entities": {
+    "userProgress": {
+      "title": "User Progress",
+      "description": "Stores the user's vocabulary learning progress",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string", "description": "The unique ID of the user" },
+        "currentDay": { "type": "integer", "description": "The current day of learning (starts from 1)" },
+        "completedWordsCount": { "type": "integer", "description": "Total words completed" },
+        "wrongWords": { "type": "array", "description": "List of words the user got wrong" },
+        "lastActiveDate": { "type": "string", "format": "date-time", "description": "Timestamp of last activity" }
+      },
+      "required": ["userId", "currentDay"]
+    },
+    "learningLog": {
+      "title": "Learning Log",
+      "description": "Records details of each learning session",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "date": { "type": "string", "format": "date-time" },
+        "wordsLearned": { "type": "integer" },
+        "quizScore": { "type": "integer" },
+        "wrongWords": { "type": "array" }
+      },
+      "required": ["userId", "date", "wordsLearned"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}/progress/current": {
+      "schema": "userProgress",
+      "description": "User's current progress state"
+    },
+    "/users/{userId}/logs/{logId}": {
+      "schema": "learningLog",
+      "description": "Historical learning logs"
+    }
+  }
+}

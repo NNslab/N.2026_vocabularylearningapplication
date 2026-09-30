@@ -1,0 +1,6 @@
+{
+  "name": "晴晴背單字",
+  "description": "一個專為小學女生設計的可愛背單字應用程式，每天學習15個單字並進行測驗。",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
